@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "160139690186",
+    "project_id": "flutter4fcm",
+    "storage_bucket": "flutter4fcm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160139690186:android:0bc8cade5787f682de7433",
+        "android_client_info": {
+          "package_name": "com.asthiseta.belajar_fcm_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "160139690186-j20s0supu3femaqvaaa5k8298ha3ke0h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABx1GvHtQVRZLLTCu3JsNbIm31a9A62ls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "160139690186-j20s0supu3femaqvaaa5k8298ha3ke0h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
