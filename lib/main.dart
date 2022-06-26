@@ -33,7 +33,15 @@ Future<void> main() async {
     print('Permission granted: ${settings.authorizationStatus}');
   }
   // It requests a registration token for sending messages to users from your App server or other trusted server environment.
-  String? token = await messaging.getToken();
+  const vapidKey = "BMOBIGyGTd3kX2hfLXS2KpYELch3r3gKf1XmKCHFY6ETn6YOAm2t9WqHfJpGH4n4zYroII4M7E9T9ymJ5nQ9idg";
+  String? token;
+  if(DefaultFirebaseOptions.currentPlatform == DefaultFirebaseOptions.web){
+    token = await messaging.getToken(
+      vapidKey: vapidKey,
+    );
+  }else{
+    token = await messaging.getToken();
+  }
 
   if (kDebugMode) {
     print('Registration Token=$token');
