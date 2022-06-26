@@ -67,6 +67,7 @@ Future<void> main() async {
 
   runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -92,12 +93,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  String _lastMessage = "";
 
-  void _incrementCounter() {
-    setState(() {
-
-      _counter++;
+  _MyHomePageState() {
+    _messageStreamController.listen((message) {
+      setState(() {
+        if (message.notification != null) {
+          _lastMessage = 'Received a notification message:'
+              '\nTitle=${message.notification?.title},'
+              '\nBody=${message.notification?.body},'
+              '\nData=${message.data}';
+        } else {
+          _lastMessage = 'Received a data message: ${message.data}';
+        }
+      });
     });
   }
 
@@ -110,28 +119,16 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+     body: Center(
+       child: Column(
+         mainAxisAlignment : MainAxisAlignment.center,
+         children: [
+           Text("Last message from Firebase Messaging: ", style: Theme.of(context).textTheme.titleLarge),
+           Text(_lastMessage, style: Theme.of(context).textTheme.bodyLarge),
+         ],
+       ),
+     ),
+     // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
