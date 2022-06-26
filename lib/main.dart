@@ -8,6 +8,8 @@ import 'firebase_options.dart';
 // FlutterFire's Firebase Cloud Messaging plugin
 import 'package:firebase_messaging/firebase_messaging.dart';
 
+import 'package:rx_dart/rx_dart.dart';
+
 // TODO: Add stream controller
 // TODO: Define the background message handler
 
