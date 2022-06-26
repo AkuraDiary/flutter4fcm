@@ -3,14 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 // core FlutterFire dependency
 import 'package:firebase_core/firebase_core.dart';
+import 'package:rxdart/rxdart.dart';
 
 import 'firebase_options.dart';
 // FlutterFire's Firebase Cloud Messaging plugin
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-import 'package:rx_dart/rx_dart.dart';
+import 'package:rxdart/rxdart.dart';
+// used to pass messages from event handler to the UI
+final _messageStreamController = BehaviorSubject<RemoteMessage>();
+
 
 // TODO: Add stream controller
+
 // TODO: Define the background message handler
 
 Future<void> main() async {
@@ -48,7 +53,16 @@ Future<void> main() async {
   if (kDebugMode) {
     print('Registration Token=$token');
   }
-  // TODO: Set up foreground message handler
+
+  FirebaseMessaging.onMessage.listen((RemoteMessage message){
+    if(kDebugMode){
+      print('Handling a foreground message: ${message.messageId}');
+      print('Message data: ${message.data}');
+      print('Message notification: ${message.notification?.title}');
+      print('Message notification: ${message.notification?.body}');
+    }
+    _messageStreamController.sink.add(message);
+  });
   // TODO: Set up background message handler
 
   runApp(MyApp());
