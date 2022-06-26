@@ -15,4 +15,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const messaging = firebase.messaging();
 
-// todo Set up background message handler
+messaging.onBackgroundMessage((message) => {
+ console.log("onBackgroundMessage", message);
+});

@@ -69,9 +69,7 @@ Future<void> main() async {
     _messageStreamController.sink.add(message);
   });
 
-  FirebaseMessaging.onBackgroundMessage.(RemoteMessage message){
-    _firebaseMessagingBackgroundHandler(message);
-  };
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   runApp(MyApp());
 }
