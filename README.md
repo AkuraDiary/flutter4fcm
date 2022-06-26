@@ -1,6 +1,6 @@
 # belajar_fcm_flutter
 
-A new Flutter project.
+Project menggabut dari codelab google flutter4fcm.
 
 ## Getting Started
 
