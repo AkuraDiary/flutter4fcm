@@ -1,6 +1,6 @@
 # belajar_fcm_flutter
 
-Project menggabut dari codelab google flutter4fcm.
+Project menggabut dari [codelab google flutter4fcm](https://firebase.google.com/codelabs/firebase-fcm-flutter)
 
 ## Getting Started
 
